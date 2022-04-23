@@ -12,15 +12,8 @@ class Solution {
         }
         long num, digit;
         int ans = 0;
-        if (n == 0) {
-            num = min;
-            digit = 0;
-        }
-        else {
-            num = min + (n - 1) / len;
-            digit = (n - 1) % len;
-        }
-        System.out.println(min + " " + max + " " + n + " " + num + " " + digit + " " + len);
+        num = min + (n - 1) / len;
+        digit = (n - 1) % len;
         for (int i = 0; i < len - digit; i++) {
             ans = (int)(num % 10);
             num /= 10;
