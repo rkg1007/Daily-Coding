@@ -6,22 +6,19 @@ class Solution {
     
     public int candy(int[] ratings) {
         int n = ratings.length;
-        int[] res = new int[n];
-        Arrays.fill(res, 1);
+        int[] dummyRes = new int[n];
+        Arrays.fill(dummyRes, 1);
         for (int i = 1; i < n; i++) {
-            if (ratings[i] > ratings[i-1]) res[i] = res[i-1] + 1;
-            else {
-                int j = i - 1;
-                while (j >= 0 && ratings[j] > ratings[j + 1] && res[j] <= res[j + 1]) {
-                    // System.out.println(j);
-                    res[j] = res[j + 1] + 1;
-                    j--;
-                }
-            }
+            if (ratings[i] > ratings[i-1]) dummyRes[i] = dummyRes[i-1] + 1;
         }
-        // print(res);
-        int ans = 0;
-        for (int num : res) ans += num;
+        
+        int ans = dummyRes[n-1];
+        int count = dummyRes[n-1];
+        for (int i = n-2; i >= 0; i--) {
+            count = (ratings[i] > ratings[i+1]) ? count + 1 : 1;
+            ans += Math.max(count, dummyRes[i]);
+        }
+        
         return ans;
     }
 }
