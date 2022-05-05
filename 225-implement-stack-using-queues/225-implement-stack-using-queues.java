@@ -7,22 +7,17 @@ class MyStack {
     
     public void push(int x) {
         this.stack.add(x);
-    }
-    
-    public int pop() {
         for (int i = 0; i < this.stack.size() - 1; i++) {
             this.stack.add(this.stack.poll());
         }
+    }
+    
+    public int pop() {
         return this.stack.poll();
     }
     
     public int top() {
-        int peek = this.stack.peek();
-        for (int i = 0; i < this.stack.size(); i++) {
-            peek = this.stack.poll();
-            this.stack.add(peek);
-        }
-        return peek;
+        return this.stack.peek();
     }
     
     public boolean empty() {
