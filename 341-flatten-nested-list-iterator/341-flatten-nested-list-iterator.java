@@ -31,9 +31,6 @@ public class NestedIterator implements Iterator<Integer> {
 
     @Override
     public Integer next() {
-        // while (stack.size() > 0 && !this.stack.getLast().isInteger()) {
-        //     processList(this.stack.removeLast().getList());
-        // }
         return this.stack.removeLast().getInteger();
     }
 
